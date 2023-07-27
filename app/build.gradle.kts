@@ -48,6 +48,8 @@ tasks.withType<Test> {
 sonarqube {
 	properties {
 		property("project.settings", "sonar-project.properties")
+		property("sonar.exclusions", "**/configs/*,**/converters/*,**/dtos/*,**/enums/*,**/exceptions/*,**/models/*,**/repositories/*,**/utils/*,**/SpringApp.kt")
+		property("sonar.coverage.exclusions", "**/configs/*,**/converters/*,**/dtos/*,**/enums/*,**/exceptions/*,**/models/*,**/repositories/*,**/utils/*,**/SpringApp.kt")
 	}
 }
 
