@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 3600     
+      
+spring:
+  application:
+    name: kotlin-gradle-kotlin-springboot-application
+  h2:
+    console:
+      enabled: true
+      path: /h2-console      
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:AZ;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true  
+    properties:
+      format_sql: true
+      dialect: org.hibernate.dialect.H2Dialect          
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+      
+logging:
+  pattern:
+    console: "%d{dd/MM/yyyy HH:mm:ss} %-5p %c{1}:%L - %m%n"
+    file: "%d{dd/MM/yyyy HH:mm:ss} %-5p %c{1}:%L - %m%n"
+  level:
+    root: INFO
+    web: INFO
+    sql: INFO
+    br.com.kumabe: INFO        

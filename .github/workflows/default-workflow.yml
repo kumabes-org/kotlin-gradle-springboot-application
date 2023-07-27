@@ -1,0 +1,42 @@
+name: "Default Workflow"
+
+on: push
+
+jobs:
+  call-workflow-ci-java-gradle:
+    uses: kumabes-org/reusable-workflows-ci-java-gradle/.github/workflows/ci.yml@main
+    with:
+      runs-on: "ubuntu-latest"
+      environment: "production"
+      working-directory: "app"
+      shell: "bash"
+      project-name: "kotlin-gradle-kotlin-springboot-application"
+      java-distribution: "zulu"
+      java-version: "11"
+      gradle-version: "7.6.1"
+    secrets: inherit
+
+  call-workflow-sonarqube:
+    needs:
+      - call-workflow-ci-java-gradle
+    uses: kumabes-org/reusable-workflows-sonarqube/.github/workflows/main.yml@main
+    with:
+      runs-on: "ubuntu-latest"
+      environment: "production"
+      working-directory: "app"
+      shell: "bash"    
+      project-name: "kotlin-gradle-kotlin-springboot-application"
+    secrets: inherit
+
+  call-workflow-codeql:
+    needs:
+      - call-workflow-ci-java-gradle
+    uses: kumabes-org/reusable-workflows-codeql/.github/workflows/main.yml@main
+    with:
+      runs-on: "ubuntu-latest"
+      environment: "production"
+      working-directory: "app"
+      shell: "bash"    
+      project-name: "kotlin-gradle-kotlin-springboot-application"
+      languages: "java"
+    secrets: inherit
