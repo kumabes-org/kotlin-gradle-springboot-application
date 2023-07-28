@@ -48,8 +48,6 @@ tasks.withType<Test> {
 sonarqube {
 	properties {
 		property("project.settings", "sonar-project.properties")
-		property("sonar.exclusions", "**/configs/*,**/converters/*,**/dtos/*,**/enums/*,**/exceptions/*,**/models/*,**/repositories/*,**/utils/*,**/SpringApp.kt")
-		property("sonar.coverage.exclusions", "**/configs/*,**/converters/*,**/dtos/*,**/enums/*,**/exceptions/*,**/models/*,**/repositories/*,**/utils/*,**/SpringApp.kt")
 	}
 }
 
@@ -62,6 +60,7 @@ tasks.jacocoTestReport {
 	reports {
 		xml.required.set(true)
 		csv.required.set(true)
+		html.required.set(true)
 		xml.outputLocation.set(File("$buildDir/reports/jacoco/jacoco.xml"))
 	}
 }
