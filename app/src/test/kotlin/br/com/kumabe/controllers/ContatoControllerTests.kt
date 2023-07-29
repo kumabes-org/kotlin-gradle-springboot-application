@@ -45,6 +45,17 @@ class ContatoControllerTest {
     }
 
     @Test
+    fun `should retrieve a contato by codigo and not found`() {
+        val codigo = 1L
+        val contato = Contato(codigo, "John Doe", "123456789", LocalDate.now())
+        Mockito.`when`(contatoRepository.findById(codigo)).thenReturn(Optional.ofNullable(null))
+        val responseEntity: ResponseEntity<ContatoDTO> = contatoController.retrieve(codigo)
+        System.out.println(responseEntity)
+        assertNotNull(responseEntity)        
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.statusCode)
+    }
+
+    @Test
     fun `should update a contato by codigo`() {
         val codigo = 1L
         val contatoDTO = ContatoDTO(codigo, "John Doe", "123456789", LocalDate.now())
