@@ -47,7 +47,6 @@ class ContatoControllerTest {
     @Test
     fun `should retrieve a contato by codigo and not found`() {
         val codigo = 1L
-        val contato = Contato(codigo, "John Doe", "123456789", LocalDate.now())
         Mockito.`when`(contatoRepository.findById(codigo)).thenReturn(Optional.ofNullable(null))
         val responseEntity: ResponseEntity<ContatoDTO> = contatoController.retrieve(codigo)
         System.out.println(responseEntity)
@@ -68,6 +67,16 @@ class ContatoControllerTest {
     }
 
     @Test
+    fun `should update a contato by codigo and NOT FOUND`() {
+        val codigo = 1L
+        val contatoDTO = ContatoDTO(codigo, "John Doe", "123456789", LocalDate.now())
+        Mockito.`when`(contatoRepository.findById(codigo)).thenReturn(Optional.ofNullable(null))
+        val responseEntity: ResponseEntity<Void> = contatoController.update(codigo, contatoDTO)
+        assertNotNull(responseEntity)
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.statusCode)
+    }
+
+    @Test
     fun `should delete a contato by codigo`() {
         val codigo = 1L
         val contato = Contato(codigo, "John Doe", "123456789", LocalDate.now())
@@ -77,6 +86,15 @@ class ContatoControllerTest {
         assertEquals(HttpStatus.NO_CONTENT, responseEntity.statusCode)
     }
 
+    @Test
+    fun `should delete a contato by codigo and NOT FOUND`() {
+        val codigo = 1L
+        Mockito.`when`(contatoRepository.findById(codigo)).thenReturn(Optional.ofNullable(null))
+        val responseEntity: ResponseEntity<Void> = contatoController.delete(codigo)
+        assertNotNull(responseEntity)
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.statusCode)
+    }
+    
     @Test
     fun `should list all contatos`() {
         val contatos = listOf(
