@@ -5,7 +5,7 @@ plugins {
 	id("java")
 	id("jacoco")
 	id("org.sonarqube") version "4.0.0.2929"
-	id("org.springframework.boot") version "2.7.10-SNAPSHOT"
+	id("org.springframework.boot") version "3.2.0-SNAPSHOT"
 	id("io.spring.dependency-management") version "1.1.2"
 	kotlin("jvm") version "1.9.1"
 	kotlin("plugin.spring") version "1.9.1"
