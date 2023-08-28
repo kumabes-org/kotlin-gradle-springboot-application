@@ -9,7 +9,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.2"
 	kotlin("jvm") version "1.9.1"
 	kotlin("plugin.spring") version "1.9.1"
-	kotlin("plugin.jpa") version "1.9.1"
+	kotlin("plugin.jpa") version "1.9.10"
 }
 
 group = "br.com.kumabe"
