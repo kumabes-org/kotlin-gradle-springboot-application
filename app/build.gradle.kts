@@ -7,9 +7,9 @@ plugins {
 	id("org.sonarqube") version "4.0.0.2929"
 	id("org.springframework.boot") version "2.7.10-SNAPSHOT"
 	id("io.spring.dependency-management") version "1.1.2"
-	kotlin("jvm") version "1.9.0"
-	kotlin("plugin.spring") version "1.9.0"
-	kotlin("plugin.jpa") version "1.9.0"
+	kotlin("jvm") version "1.9.1"
+	kotlin("plugin.spring") version "1.9.1"
+	kotlin("plugin.jpa") version "1.9.1"
 }
 
 group = "br.com.kumabe"
