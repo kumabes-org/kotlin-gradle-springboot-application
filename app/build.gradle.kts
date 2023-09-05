@@ -4,7 +4,7 @@ import org.gradle.kotlin.dsl.*
 plugins {
 	id("java")
 	id("jacoco")
-	id("org.sonarqube") version "4.3.0.3225"
+	id("org.sonarqube") version "4.3.1.3277"
 	id("org.springframework.boot") version "2.7.10-SNAPSHOT"
 	id("io.spring.dependency-management") version "1.1.3"
 	kotlin("jvm") version "1.9.10"
